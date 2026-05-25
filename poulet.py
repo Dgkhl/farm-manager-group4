@@ -7,7 +7,7 @@ from animal import Animal
 class Poulet(Animal):
     """A chicken IS AN Animal — direct inheritance."""
 
-    AVERAGE_EGG_PRICE = 75.0
+    AVERAGE_EGG_PRICE = 150
 
     def __init__(self, name: str, age: int, weight: float,
                  is_vaccinated: bool, eggs_per_day: int,

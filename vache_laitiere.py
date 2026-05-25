@@ -1,33 +1,31 @@
+# vache_laitiere.py  —  Child class (inherits Animal)
+# Dev 2 : COMPAORE Adil Fahim Saidou
+
 from animal import Animal
 
 
 class VacheLaitiere(Animal):
-    """Une vache laitière EST UN Animal — héritage direct."""
+    """A dairy cow IS AN Animal — direct inheritance."""
 
-    def __init__(self, nom: str, age: int, poids: float,
-                 is_vaccinated: bool, production_journaliere: float,
-                 prix_litre: float):
-        super().__init__(nom, age, poids, is_vaccinated)
-        self.production_journaliere = production_journaliere
-        self.prix_litre = prix_litre
+    def __init__(self, name: str, age: int, weight: float,
+                 is_vaccinated: bool, daily_milk_liters: float,
+                 price_per_liter: float):
+        super().__init__(name, age, weight, is_vaccinated)
+        self.daily_milk_liters = daily_milk_liters
+        self.price_per_liter   = price_per_liter
 
-    # ■■ Magic Method __str__ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     def __str__(self) -> str:
-        return (f"[Vache Laitière] {self.nom} | "
-                f"Production : {self.production_journaliere:.1f} L/jour | "
-                f"Prix : {self.prix_litre:.0f} FCFA/L")
+        return (f"[Dairy Cow] {self.name} | "
+                f"Milk : {self.daily_milk_liters:.1f} L/day | "
+                f"Price : {self.price_per_liter:.0f} FCFA/L")
 
-    # ■■ Magic Method __len__ ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
     def __len__(self) -> int:
-        """Retourne la production arrondie (en litres entiers)."""
-        return int(self.production_journaliere)
+        return int(self.daily_milk_liters)
 
-    # ■■ Méthode spécifique ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-    def revenu_projection(self, jours: int) -> float:
-        """Calcul arithmétique du revenu sur N jours."""
-        return self.production_journaliere * self.prix_litre * jours
+    def revenue_projection(self, days: int) -> float:
+        return self.daily_milk_liters * self.price_per_liter * days
 
     @property
-    def est_haute_production(self) -> bool:
-        """True si production > 15 L/jour."""
-        return self.production_journaliere > 15.0
+    def is_high_production(self) -> bool:
+        """True if the cow produces more than 15 litres per day."""
+        return self.daily_milk_liters > 15.0
